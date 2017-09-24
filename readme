@@ -51,7 +51,8 @@
         opjo 所有Vo/To类等
         jsp 页面包,各个部门自己建包，页面也分包存放
         static js/css等存放 如果有自己写的js文件，新建js包存放
-    util 工具类存放处、
+    util 工具类存放处
+    
 五、页面
     1.页面使用jsp页面
     2.页面框架使用easyUI实现
