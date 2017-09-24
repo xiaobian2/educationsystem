@@ -21,14 +21,13 @@
     <result column="birth_date" property="birthDate" jdbcType="DATE" />
     <result column="age" property="age" jdbcType="INTEGER" />
     <result column="education" property="education" jdbcType="VARCHAR" />
-    <result column="professiona" property="professiona" jdbcType="VARCHAR" />
+    <result column="profession" property="profession" jdbcType="VARCHAR" />
     <result column="graduation_date" property="graduationDate" jdbcType="DATE" />
     <result column="parents_name" property="parentsName" jdbcType="VARCHAR" />
     <result column="parents_tel" property="parentsTel" jdbcType="VARCHAR" />
     <result column="emergency_contact" property="emergencyContact" jdbcType="VARCHAR" />
     <result column="emergency_contact_tel" property="emergencyContactTel" jdbcType="VARCHAR" />
     <result column="household_registration_code" property="householdRegistrationCode" jdbcType="VARCHAR" />
-    <result column="home_address_code" property="homeAddressCode" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
     <!--
@@ -37,8 +36,8 @@
     -->
     student_id, address_id, student_name, student_num, gender, native_place, home_address, 
     telephone, email, document_type, document_number, nation, birth_date, age, education, 
-    professiona, graduation_date, parents_name, parents_tel, emergency_contact, emergency_contact_tel, 
-    household_registration_code, home_address_code
+    profession, graduation_date, parents_name, parents_tel, emergency_contact, emergency_contact_tel, 
+    household_registration_code
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     <!--
@@ -68,19 +67,17 @@
       home_address, telephone, email, 
       document_type, document_number, nation, 
       birth_date, age, education, 
-      professiona, graduation_date, parents_name, 
+      profession, graduation_date, parents_name, 
       parents_tel, emergency_contact, emergency_contact_tel, 
-      household_registration_code, home_address_code
-      )
+      household_registration_code)
     values (#{studentId,jdbcType=INTEGER}, #{addressId,jdbcType=INTEGER}, #{studentName,jdbcType=VARCHAR}, 
       #{studentNum,jdbcType=VARCHAR}, #{gender,jdbcType=INTEGER}, #{nativePlace,jdbcType=VARCHAR}, 
       #{homeAddress,jdbcType=VARCHAR}, #{telephone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
       #{documentType,jdbcType=INTEGER}, #{documentNumber,jdbcType=VARCHAR}, #{nation,jdbcType=VARCHAR}, 
       #{birthDate,jdbcType=DATE}, #{age,jdbcType=INTEGER}, #{education,jdbcType=VARCHAR}, 
-      #{professiona,jdbcType=VARCHAR}, #{graduationDate,jdbcType=DATE}, #{parentsName,jdbcType=VARCHAR}, 
+      #{profession,jdbcType=VARCHAR}, #{graduationDate,jdbcType=DATE}, #{parentsName,jdbcType=VARCHAR}, 
       #{parentsTel,jdbcType=VARCHAR}, #{emergencyContact,jdbcType=VARCHAR}, #{emergencyContactTel,jdbcType=VARCHAR}, 
-      #{householdRegistrationCode,jdbcType=VARCHAR}, #{homeAddressCode,jdbcType=VARCHAR}
-      )
+      #{householdRegistrationCode,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="cn.beijing.ssfh.entity.StudentInformation" >
     <!--
@@ -134,8 +131,8 @@
       <if test="education != null" >
         education,
       </if>
-      <if test="professiona != null" >
-        professiona,
+      <if test="profession != null" >
+        profession,
       </if>
       <if test="graduationDate != null" >
         graduation_date,
@@ -154,9 +151,6 @@
       </if>
       <if test="householdRegistrationCode != null" >
         household_registration_code,
-      </if>
-      <if test="homeAddressCode != null" >
-        home_address_code,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -205,8 +199,8 @@
       <if test="education != null" >
         #{education,jdbcType=VARCHAR},
       </if>
-      <if test="professiona != null" >
-        #{professiona,jdbcType=VARCHAR},
+      <if test="profession != null" >
+        #{profession,jdbcType=VARCHAR},
       </if>
       <if test="graduationDate != null" >
         #{graduationDate,jdbcType=DATE},
@@ -225,9 +219,6 @@
       </if>
       <if test="householdRegistrationCode != null" >
         #{householdRegistrationCode,jdbcType=VARCHAR},
-      </if>
-      <if test="homeAddressCode != null" >
-        #{homeAddressCode,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -280,8 +271,8 @@
       <if test="education != null" >
         education = #{education,jdbcType=VARCHAR},
       </if>
-      <if test="professiona != null" >
-        professiona = #{professiona,jdbcType=VARCHAR},
+      <if test="profession != null" >
+        profession = #{profession,jdbcType=VARCHAR},
       </if>
       <if test="graduationDate != null" >
         graduation_date = #{graduationDate,jdbcType=DATE},
@@ -300,9 +291,6 @@
       </if>
       <if test="householdRegistrationCode != null" >
         household_registration_code = #{householdRegistrationCode,jdbcType=VARCHAR},
-      </if>
-      <if test="homeAddressCode != null" >
-        home_address_code = #{homeAddressCode,jdbcType=VARCHAR},
       </if>
     </set>
     where student_id = #{studentId,jdbcType=INTEGER}
@@ -327,14 +315,13 @@
       birth_date = #{birthDate,jdbcType=DATE},
       age = #{age,jdbcType=INTEGER},
       education = #{education,jdbcType=VARCHAR},
-      professiona = #{professiona,jdbcType=VARCHAR},
+      profession = #{profession,jdbcType=VARCHAR},
       graduation_date = #{graduationDate,jdbcType=DATE},
       parents_name = #{parentsName,jdbcType=VARCHAR},
       parents_tel = #{parentsTel,jdbcType=VARCHAR},
       emergency_contact = #{emergencyContact,jdbcType=VARCHAR},
       emergency_contact_tel = #{emergencyContactTel,jdbcType=VARCHAR},
-      household_registration_code = #{householdRegistrationCode,jdbcType=VARCHAR},
-      home_address_code = #{homeAddressCode,jdbcType=VARCHAR}
+      household_registration_code = #{householdRegistrationCode,jdbcType=VARCHAR}
     where student_id = #{studentId,jdbcType=INTEGER}
   </update>
 </mapper>
