@@ -1,0 +1,106 @@
+    ！！！！！文件代码，clone下来之后，一定要新建分支操作修改！！！！！
+    项目代码下载之后可能会有文件夹标识丢失情况，自己手动添加一次，resources文件夹与test文件夹标识丢失。
+一、命名规范
+    1.标识符用英文的驼峰命名法（所有命名使用英文，不会的有道词典）
+    2.数组命名 如  int[] a={};
+    3.常量命名全部大写，单词间用下划线隔开，力求语义表达完整清楚，不要嫌名字长
+    4.抽象类命名使用 Abstract
+    5.Boolean命名不要使用is前缀
+    6.接口不要加public等修饰符，但一定要加上注释
+    7.A) Service/DAO 层方法命名规约
+         1） 获取单个对象的方法用 get 做前缀。
+         2） 获取多个对象的方法用 list 做前缀。
+         3） 获取统计值的方法用 count 做前缀。
+         4） 插入的方法用 save（推荐）或 insert 做前缀。
+         5） 删除的方法用 remove（推荐）或 delete 做前缀。
+         6） 修改的方法用 update 做前缀
+    8.VO类命名：xxxVO
+    9.任何运算符左右必须加一个空格
+    10.大括号的使用约定。如果是大括号内为空，则简洁地写成{}即可，不需要换行；如果 是非空代码块则：
+        1） 左大括号前不换行。
+        2） 左大括号后换行。
+        3） 右大括号前换行。
+        4） 右大括号后还有 else 等代码则不换行；表示终止右大括号后必须换行。
+    11.方法体内的执行语句组、变量的定义语句组、不同的业务逻辑之间或者不同的语义 之间插入一个空行。
+        相同业务逻辑和语义之间不需要插入空行。 说明：没有必要插入多行空格进行隔开
+    12.类成员与方法访问控制从严：
+        1） 如果不允许外部直接通过 new 来创建对象，那么构造方法必须是 private。
+        2） 工具类不允许有 public 或 default 构造方法。
+        3） 类非 static 成员变量并且与子类共享，必须是 protected。
+        4） 类非 static 成员变量并且仅在本类使用，必须是 private。
+        5） 类 static 成员变量如果仅在本类使用，必须是 private。
+        6） 若是 static 成员变量，必须考虑是否为 final。
+        7） 类成员方法只供类内部调用，必须是 private。
+        8） 类成员方法只对继承类公开，那么限制为 protected
+二、注释
+    1.每个方法前写方法作用注释
+    2.负责人 一定要写中文，定位到人
+    3.注释使用统一：/** * */风格
+三、单元测试
+    1.service每个方法写测试方法
+四、项目包结构
+    1.service和controller按cn.ssfh.部门名.功能模块名
+    不要直接在根包下写代码，每个部门自己建立自己的包，之后写代码
+    2.包作用：
+         aop 存放所有aop代码
+             printinfo 日志输出切面代码
+        controller 存放所有congroller代码
+        info 日志输出存放处
+        mapper dao层，mapper以及对应xml文件
+        sercices services层代码
+        opjo 所有Vo/To类等
+        jsp 页面包,各个部门自己建包，页面也分包存放
+        static js/css等存放 如果有自己写的js文件，新建js包存放
+    util 工具类存放处、
+五、页面
+    1.页面使用jsp页面
+    2.页面框架使用easyUI实现
+    3.页面同样分包存放，包括页面与图片等资源
+    4.到某个页面字段用to，执行方法使用do开头,一定要写全名最后以.controller结尾
+六、字段注释
+    1  address  地址表
+    2  chapter  章节表
+    3  classroom  教室表
+    4  classroom_state  教室状态表
+    5  course_plan  课程进度表
+    6  course_tables  课程表
+    7  date_time  日期表
+    8  day_time  每日时间段表（每天4个时间段）
+    9  department  部门表
+    10 departmental_permissions  部门权限表
+    11 departmental_role  部门用户表
+    12 employment  毕业学生信息表
+    13 enterprise  企业表
+    14 enterprise_contact  企业联系人表
+    15 enterprise_maintenance_information_sheet  企业维护信息表
+    16 enterprise_recruitment_information  企业招聘信息表
+    17 enterprise_teacher  企业老师关系表
+    18 grade  班级表
+    19 grade_sircle  班级上课周期表
+    20 grade_state  班级状态表
+    21 grade_student  班级学生关系表id
+    22 grade_teacher  班级老师关系表
+    23 graduation_student_visit_record  回访记录表
+    24 major  专业方向
+    25 menu  菜单表
+    26 menu_permissions  菜单权限关系表
+    27 permissions  权限表
+    28 production  产品版本
+    29 role 角色表
+    30 role_permissions  角色权限关系表
+    31 sircle_time_part  班级周期每日时段表（上下午）
+    32 state  状态表
+    33 student_information  学生信息表
+    34 study_parts  学习阶段表
+    35 tbuser 用户表
+    36 teacher  老师表
+    37 teacher_course  教师课程关系表
+    38 teacher_state  教师状态表
+    39 teaching_plan 教案表
+    40 test_paper  试卷表
+    41 test_score  成绩表
+    42 upload_path  路径表
+    43 user_info  用户信息表
+    44 user_role  用户角色表
+    45 week  星期表
+    46 work_report  工作报告表
