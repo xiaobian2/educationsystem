@@ -1,49 +1,55 @@
 package cn.beijing.ssfh.realm;
 
-
-import cn.beijing.ssfh.services.LoginServices;
-import org.apache.shiro.authc.AuthenticationException;
-import org.apache.shiro.authc.AuthenticationInfo;
-import org.apache.shiro.authc.AuthenticationToken;
+import cn.beijing.ssfh.entity.Tbuser;
+import cn.beijing.ssfh.services.Userservice;
+import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
+import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 
-import javax.inject.Inject;
+import javax.annotation.Resource;
 
+/**
+ * Created by Mr.W on 2017/9/24.
+ */
+public class MyRealm extends AuthorizingRealm {
+    
+    @Resource
+    private Userservice userservice;
 
-public class MyRealm extends AuthorizingRealm{
+    /**
+    * @Description: 权限认证
+    * @Author Mr.W
+    * @Date 2017/9/24 21:04
+    * @version V1.0
+    */
+    @Override
+    protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
+        String username = String.valueOf(principalCollection.getPrimaryPrincipal());
+        Tbuser user = userservice.loginByUsername(username);
+        SimpleAuthorizationInfo  simpleAuthorizationInfo = new SimpleAuthorizationInfo();
+        simpleAuthorizationInfo.setRoles(userservice.getRolesByUsername(username));
+        simpleAuthorizationInfo.setStringPermissions(userservice.getPremissionsByUsername(username));
+        return simpleAuthorizationInfo;
+    }
 
-	@Inject
-	private LoginServices loginServices;
-	
-	/**
-	 * Ϊ����ǰ��¼���û������ɫ��Ȩ
-	 */
-	@Override
-	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
-//		String userName=(String)principals.getPrimaryPrincipal();
-//		SimpleAuthorizationInfo authorizationInfo=new SimpleAuthorizationInfo();
-//		authorizationInfo.setRoles(loginServices.getRoles(userName));
-//		authorizationInfo.setStringPermissions(loginServices.getPermissions(userName));
-//		return authorizationInfo;
-		return null;
-	}
+    /**
+    * @Description: 身份认证
+    * @Author Mr.W
+    * @Date 2017/9/24 21:04
+    * @version V1.0
+    */
+    @Override
+    protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
+        UsernamePasswordToken token = (UsernamePasswordToken)authenticationToken;
+        String username = String.valueOf(token.getPrincipal());
+        Tbuser user = userservice.loginByUsername(username);
+        if ( user == null) {
+            return  null;
+        }
+        AuthenticationInfo info = new SimpleAuthenticationInfo(user.getUsername(),user.getPassword(),getName());
 
-	/**
-	 * ��֤��ǰ��¼���û�
-	 */
-	@Override
-	protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
-		String userName=(String)token.getPrincipal();
-//			User user=userService.getByUserName(userName);
-//			if(user!=null){
-//				AuthenticationInfo authcInfo=new SimpleAuthenticationInfo(user.getUserName(),user.getPassword(),"xx");
-//				return authcInfo;
-//			}else{
-//				return null;
-//			}
-		return null;
-	}
-
+        return info;
+    }
 }

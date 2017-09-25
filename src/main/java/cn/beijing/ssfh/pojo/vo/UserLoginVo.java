@@ -8,8 +8,36 @@ import java.util.List;
 public class UserLoginVo {
     private Integer tbuserId;
     private String username,password;
-    private List<Integer> roleId;
-    private List<Integer> premissionId;
+    private List<RoleVO> list;
+
+    public UserLoginVo() {
+    }
+
+    public UserLoginVo(Integer tbuserId, String username, String password, List<RoleVO> list) {
+
+        this.tbuserId = tbuserId;
+        this.username = username;
+        this.password = password;
+        this.list = list;
+    }
+
+    @Override
+    public String toString() {
+        return "UserLoginVo{" +
+                "tbuserId=" + tbuserId +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", list=" + list +
+                '}';
+    }
+
+    public Integer getTbuserId() {
+        return tbuserId;
+    }
+
+    public void setTbuserId(Integer tbuserId) {
+        this.tbuserId = tbuserId;
+    }
 
     public String getUsername() {
         return username;
@@ -27,28 +55,11 @@ public class UserLoginVo {
         this.password = password;
     }
 
-    public List<Integer> getRoleId() {
-        return roleId;
+    public List<RoleVO> getList() {
+        return list;
     }
 
-    public void setRoleId(List<Integer> roleId) {
-        this.roleId = roleId;
-    }
-
-    public List<Integer> getPremissionId() {
-        return premissionId;
-    }
-
-    public void setPremissionId(List<Integer> premissionId) {
-        this.premissionId = premissionId;
-    }
-
-    public Integer getTbuserId() {
-
-        return tbuserId;
-    }
-
-    public void setTbuserId(Integer tbuserId) {
-        this.tbuserId = tbuserId;
+    public void setList(List<RoleVO> list) {
+        this.list = list;
     }
 }
