@@ -1,11 +1,15 @@
-package cn.beijing.ssfh.mapper;
+package cn.beijing.ssfh.services;
 
 import cn.beijing.ssfh.entity.CourseTables;
 import cn.beijing.ssfh.pojo.vo.CourseTableVO;
 
 import java.util.List;
 
-public interface CourseTablesMapper {
+/**
+ * Created by Administrator on 2017/9/26.
+ * Author bianliqiang
+ */
+public interface CourseTableVOService {
     int deleteByPrimaryKey(Integer courseTablesId);
 
     int insert(CourseTables record);
@@ -19,5 +23,4 @@ public interface CourseTablesMapper {
     int updateByPrimaryKeySelective(CourseTables record);
 
     int updateByPrimaryKey(CourseTables record);
-
 }
