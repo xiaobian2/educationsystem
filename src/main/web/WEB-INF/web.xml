@@ -21,7 +21,7 @@
     </filter-mapping>
 
     <welcome-file-list>
-        <welcome-file>/WEB-INF/jsp/login.jsp</welcome-file>
+        <welcome-file>/WEB-INF/jsp/coursetable/CourseTable.jsp</welcome-file>
     </welcome-file-list>
 
 
